@@ -4,13 +4,11 @@ import com.ancient.thaumicgadgets.Main;
 import com.ancient.thaumicgadgets.init.ModBlocks;
 import com.ancient.thaumicgadgets.init.ModEnchantments;
 import com.ancient.thaumicgadgets.init.ModItems;
-import com.ancient.thaumicgadgets.init.ModSounds;
 import com.ancient.thaumicgadgets.util.IHasModel;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.SoundEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -22,8 +20,6 @@ import net.minecraftforge.oredict.OreDictionary;
 @EventBusSubscriber
 public class RegistyHandler {
     public static void preInitRegistries() {
-        ModSounds.registerSounds();
-
         NetworkRegistry.INSTANCE.registerGuiHandler(Main.instance, new GUIHandler());
     }
 
@@ -61,12 +57,6 @@ public class RegistyHandler {
     @SubscribeEvent
     public static void onEnchantmentRegister(RegistryEvent.Register<Enchantment> event) {
         event.getRegistry().registerAll(ModEnchantments.ECHANTMENTS.toArray((new Enchantment[0])));
-    }
-
-
-    @SubscribeEvent
-    public static void onSoundRegister(RegistryEvent.Register<SoundEvent> event) {
-        event.getRegistry().registerAll(ModSounds.SOUNDS.toArray((new SoundEvent[0])));
     }
 
     @SubscribeEvent
